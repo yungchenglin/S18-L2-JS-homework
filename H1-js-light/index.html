@@ -8,7 +8,7 @@
     function toggleLight() {
       var image = document.getElementById("image");
       state = !state;
-      image.src = state ? "img/on.jpg" : "img/off.jpg";
+      image.src = state ? "img/on.jpg": "img/off.jpg";
     }  
 
     var timeLeft = 5;
@@ -25,7 +25,7 @@
   </script>
 </head>
 <body>
-  <img id="image" src="img/on.jpg">
+  <img id="image" src="img/on.jpg"  width="250">
     <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
       <div class="div" id="timer">5</div>
 
