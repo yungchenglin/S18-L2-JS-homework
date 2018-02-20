@@ -22,12 +22,29 @@
     }
 
     var id = setInterval(countDownTimer, 1000);
+
+    function validate(){
+      var code = document.getElementById("nric").value;
+      if (code ==""){
+        alert("內容是空的，發出警告!");
+      }
+      else if (isNaN(code)){
+        alert("內容必須是數字，發出警告！");
+      }
+      else
+        document.getElementById("result").innerHTML = "input current."
+      }
+
   </script>
 </head>
 <body>
   <img id="image" src="img/on.jpg"  width="250">
     <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
-      <div class="div" id="timer">5</div>
+        <div class="div" id = "timer">5</div>
+          <form>
+            <input type="text" id="nric">
+              <input type="button" value="確認" onclick="validate()">
+                <p id = "result"></p>
 
 </body>
 </html>
