@@ -5,46 +5,55 @@
   <title>Document</title>
   <script>
     var state = true;
+
     function toggleLight() {
       var image = document.getElementById("image");
       state = !state;
-      image.src = state ? "img/on.jpg": "img/off.jpg";
+      image.src = state ? "img/on.jpg" : "img/off.jpg";
     }  
 
-    var timeLeft = 5;
+    var timeLeft = 0;
+    var setting  = 0;
+
+    function setTime(){
+      var time = document.getElementById("time-set").value;
+      if (time == ""){
+        alert("內容是空的，發出警告!");
+      }
+      else  {
+        time = parseInt(time);
+        if (isNaN(time)){
+          alert("內容必須是數字，發出警告！");
+        }
+        document.getElementById("timer").innerHTML = time;
+        document.getElementById("time-set").value = "";
+        timeLeft = time;
+        setting = setInterval(countDownTimer, 1000);
+      }
+    }
+
     function countDownTimer() {
       timeLeft = timeLeft - 1;
       if (timeLeft <=0) {
         document.getElementById("image").src = "img/off.jpg";
-        clearInterval(id);
+        state = !state;
+        clearInterval(setting);
       }
       document.getElementById("timer").innerHTML = timeLeft;
     }
 
-    var id = setInterval(countDownTimer, 1000);
-
-    function validate(){
-      var code = document.getElementById("nric").value;
-      if (code ==""){
-        alert("內容是空的，發出警告!");
-      }
-      else if (isNaN(code)){
-        alert("內容必須是數字，發出警告！");
-      }
-      else
-        document.getElementById("result").innerHTML = "input current."
-      }
 
   </script>
 </head>
 <body>
   <img id="image" src="img/on.jpg"  width="250">
     <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
-        <div class="div" id = "timer">5</div>
+        <div id = "timer"></div>
           <form>
-            <input type="text" id="nric">
-              <input type="button" value="確認" onclick="validate()">
+            <input type="text" id="time-set">
+              <input type="button" value="確認" onclick="setTime();">
                 <p id = "result"></p>
+              </form>
 
 </body>
 </html>
