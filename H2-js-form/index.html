@@ -3,24 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-    <script type="">
+    <script>
       function validate(){
-        var code = document.getElementById("nric").value;
+
+        var nric = document.getElementById("nric");
+        var code = nric.value;
+
         if (code == ""){
-          alert("內容是空的，發出警告！");
+          alert("身分證字號是空的，發出警告！");
+          return;
         } else if (!isNaN(code)){
-          alert("內容不能是數字，發出警告！");
+          alert("身分證字號不能全是數字，發出警告！");
+          return;
         } else if (code.length !=10){
-          alert("內容長度不正確，發出警告！");
-        } else {
-          document.getElementById("result").innerHTML = "通過驗證";
+          alert("身分證字號長度不正確，發出警告！");
+          return;
+        } else{
+
+          var char = code[1];
+
+          var sex = findsex(char);
+          if(!sex){
+            alert("性別錯誤，這不是正確的身分證字號！");
+            return;
+          }
+        }
+
+          document.getElementById("result").innerHTML = findsex(char)+"通過驗證";
+          }
+
+          function findsex(char){
+            switch(char){
+              case "1": return "某男性";
+              case "2": return "某女性";
+              default: return false;
           }
       }
     </script>
 </head>
 <body>
   <form>
-    <input type="text" id="nric">
+    <td><label>請輸入身分證字號</label></td>
+      <td><input type="text" id="nric"></td>
     <input type="button" value="驗證" onclick="validate()">
     <p id="result"></p>
   </form>

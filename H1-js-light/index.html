@@ -32,7 +32,7 @@
       }
     }
 
-    function countDownTimer() {
+    function countDownTimer() { 
       timeLeft = timeLeft - 1;
       if (timeLeft <=0) {
         document.getElementById("image").src = "img/off.jpg";
@@ -51,8 +51,7 @@
         <div id = "timer"></div>
           <form>
             <input type="text" id="time-set">
-              <input type="button" value="確認" onclick="setTime();">
-                <p id = "result"></p>
+              <input type="button" value="確認" onclick="setTime();"> 
               </form>
 
 </body>
