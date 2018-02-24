@@ -49,8 +49,13 @@
               var answer = confirm("Are you sure?");
                 if (answer == true)
                   {
-                    alert("This to-do has been deleted.");
-                    this.parentNode.parentNode.removeChild(this.parentNode);
+                    alert("This to-do has been closed.");
+                  
+                    span.style.color = "red";
+                    span.style.font.size = "20px";
+
+                    todo.removeChild(replaceButton);
+                    todo.removeChild(removeButton);
                   }
               }
 
@@ -70,7 +75,6 @@
   <p>Please input your to-do</p>
   <input type="text" id="input">
   <button onclick="createToDo()">+</button>
-
   <div id="todolist"></div>
 </body>
 </html>
