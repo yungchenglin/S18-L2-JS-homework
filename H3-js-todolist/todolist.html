@@ -11,20 +11,28 @@
         var input = document.getElementById("input").value;   //To - Do input
        
         if ( input == ""){
-          input = "No uesd information";
+          input = "No uesd information!";
         }
 
         span.innerHTML = input;
-
         todo.appendChild(span);
+        alert("Did you went to added?");
 
         var replaceButton = document.createElement("button"); //To - Do replace button
           replaceButton.onclick = function() {
-           var input = document.getElementById("input").value;
+            var input = document.getElementById("input").value;
             if (input == ""){
-              alert("You are not input anything");
-              return;
-            }
+                     alert("You are not input anything!");
+                      return;
+                   } 
+
+            var write = confirm("Did you went to replaced");
+                if (write == true)
+                  {
+                    alert("This to-do has been replaced.");
+                  
+                  }
+
             this.parentNode.firstChild.innerHTML = input;
            document.getElementById("input").value = "";
           }
@@ -34,11 +42,17 @@
          
         var removeButton = document.createElement("button");  //To - Do remove button
           removeButton.onclick = function() {
-            this.parentNode.parentNode.removeChild(this.parentNode);
-          }
+              var answer = confirm("Are you sure?");
+                if (answer == true)
+                  {
+                    alert("This to-do has been deleted.");
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                  }
+              }
 
           removeButton.textContent = "V";
           todo.appendChild(removeButton);
+          
 
         document.getElementById("todolist").appendChild(todo);
         document.getElementById("input").value ="";
@@ -49,6 +63,7 @@
     </script>
 </head>
 <body>
+  <p>Please input your to-do</p>
   <input type="text" id="input">
   <button onclick="createToDo()">+</button>
 
