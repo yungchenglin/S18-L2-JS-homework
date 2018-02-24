@@ -30,7 +30,6 @@
                 if (write == true)
                   {
                     alert("This to-do has been replaced.");
-                  
                   }
 
                 else {
@@ -42,7 +41,6 @@
           }
         replaceButton.textContent = "R";
         todo.appendChild(replaceButton);
-
          
         var removeButton = document.createElement("button");  //To - Do remove button
           removeButton.onclick = function() {
@@ -50,10 +48,7 @@
                 if (answer == true)
                   {
                     alert("This to-do has been closed.");
-                  
-                    span.style.color = "red";
-                    span.style.font.size = "20px";
-
+                    span.style.color = "silver";
                     todo.removeChild(replaceButton);
                     todo.removeChild(removeButton);
                   }
@@ -62,12 +57,9 @@
           removeButton.textContent = "V";
           todo.appendChild(removeButton);
           
-
         document.getElementById("todolist").appendChild(todo);
         document.getElementById("input").value ="";
-
       }
-
 
     </script>
 </head>
