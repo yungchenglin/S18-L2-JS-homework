@@ -6,13 +6,24 @@
     <script>
       function createToDo() {
 
-        var todo = document.createElement("div");             //To - Do div
-        var span = document.createElement("span");            //To - Do span
-        var input = document.getElementById("input").value;   //To - Do input
+        var todo = document.createElement("div");                  //To - Do div
+        var span = document.createElement("span");                //To - Do span
+        var input = document.getElementById("input").value;        //To - Do input
+        var urgent = document.getElementById("unurgent").checked;  //To - Do unurgent
+
        
         if ( input == ""){
           input = "No uesd information!";
         }
+
+        else
+          { if (urgent == true ){
+              span.style.color = "green"; 
+              } 
+             else {
+              span.style.color = "red";
+             }
+          }
 
         span.innerHTML = input;
         todo.appendChild(span);
@@ -30,7 +41,6 @@
                 if (write == true)
                   {
                     alert("This to-do has been replaced.");
-                  
                   }
 
                 else {
@@ -42,35 +52,38 @@
           }
         replaceButton.textContent = "R";
         todo.appendChild(replaceButton);
-
          
         var removeButton = document.createElement("button");  //To - Do remove button
           removeButton.onclick = function() {
               var answer = confirm("Are you sure?");
                 if (answer == true)
                   {
-                    alert("This to-do has been deleted.");
-                    this.parentNode.parentNode.removeChild(this.parentNode);
+                    alert("This to-do has been closed.");
+                    span.style.color = "silver";
+                    todo.removeChild(replaceButton);
+                    todo.removeChild(removeButton);
                   }
               }
 
           removeButton.textContent = "V";
           todo.appendChild(removeButton);
           
-
         document.getElementById("todolist").appendChild(todo);
         document.getElementById("input").value ="";
-
       }
-
+    
 
     </script>
 </head>
 <body>
-  <p>Please input your to-do</p>
+  <p>Please input your to-do and chose the urgent.</p>
   <input type="text" id="input">
   <button onclick="createToDo()">+</button>
-
-  <div id="todolist"></div>
+  <div id="todolist">
+    <form id="todoform" method="post" action="option.php">
+      <input type="radio" name="urgent" id="urgent" checked>緊急<br>
+      <input type="radio" name="urgent" id="unurgent">不緊急
+    </form>
+  </div>
 </body>
 </html>
